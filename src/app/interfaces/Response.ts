@@ -1,5 +1,5 @@
 export interface Resposta<T> {
-    mensagem?: string;
+    message?: string;
     data: T;
   }
   

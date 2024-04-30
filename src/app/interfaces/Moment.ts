@@ -1,10 +1,10 @@
 export interface Moment {
     id?: number;
-    titulo: string;
-    descricao: string;
-    imagem: string;
+    title: string;
+    description: string;
+    image: string;
     created_at?: string;
     updated_at?: string;
-    comentarios?: [{ texto: string; usuario: string }];
+    comments?: [{ texto: string; usuario: string }];
   }
   
