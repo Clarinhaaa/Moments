@@ -14,6 +14,7 @@ import { AboutComponent } from './components/pages/about/about.component';
 import { NovoMomentComponent } from './components/pages/novo-moment/novo-moment.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MomentComponent } from './components/pages/moment/moment.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HomeComponent,
     AboutComponent,
     NovoMomentComponent,
-    MessagesComponent
+    MessagesComponent,
+    MomentComponent
   ],
   imports: [
     BrowserModule,
