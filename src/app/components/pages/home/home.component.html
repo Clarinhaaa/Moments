@@ -1,1 +1,22 @@
-<h2>HOME</h2>
+<div class="home-container">
+  <h1>Veja seus momentos!</h1>
+  <p>[componente form de pesquisa]</p>
+  <div *ngIf="moments.length > 0; else noMoments">
+    <div class="moments-container">
+      <div class="moment" *ngFor="let moment of moments">
+        <img
+          src="{{ baseApiUrl }}uploads/{{ moment.image }}"
+          alt="{{ moment.title }}"
+        />
+        <h3>{{ moment.title }}</h3>
+        <p class="date">Postado em: {{ moment.created_at }}</p>
+        <p>Comentários: {{ moment.comments!.length }}</p>
+        <p><a routerLink="/moments/{{ moment.id }}">Detalhes</a></p>
+      </div>
+    </div>
+  </div>
+  <ng-template #noMoments>
+    <h1>Não há momentos publicados ainda!</h1>
+    <p><a routerLink="/moments/novo">Compartilhar um momento</a></p>
+  </ng-template>
+</div>

@@ -29,7 +29,7 @@ export class NovoMomentComponent {
     }
 
     //envio dos dados para o service, no qual eles serão cadastrados no banco de dados da API
-    await this.momentService.criarMoment(formData).subscribe();
+    await this.momentService.createMoment(formData).subscribe();
 
     //exibição das mensagens do sistema após o evento (criar, editar ou remover um momento)
     this.messageService.add('Momento criado com sucesso!');

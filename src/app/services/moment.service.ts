@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Moment } from '../interfaces/Moment';
+import { Response } from '../interfaces/Response';
 
 import { environment } from 'src/environments/environment.development';
 
@@ -10,12 +11,15 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root',
 })
 export class MomentService {
-  private baseApiUrl = environment.baseApiUrl;
-  private apiUrl = `${this.baseApiUrl}api/moments`;
+  private apiUrl = `${environment.baseApiUrl}api/moments`;
 
   constructor(private http: HttpClient) {}
 
-  criarMoment(formData: FormData): Observable<FormData> {
+  getMoments(): Observable<Response<Moment[]>> {
+    return this.http.get<Response<Moment[]>>(this.apiUrl);
+  }
+
+  createMoment(formData: FormData): Observable<FormData> {
     return this.http.post<FormData>(this.apiUrl, formData);
   }
 }
