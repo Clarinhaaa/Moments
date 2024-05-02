@@ -10,5 +10,6 @@ import { MessageService } from 'src/app/services/messages.service';
 export class MessagesComponent {
   faTimes = faTimes;
 
+  //inicializando o service no construtor para usar no HTML
   constructor(public messageService: MessageService) {}
 }

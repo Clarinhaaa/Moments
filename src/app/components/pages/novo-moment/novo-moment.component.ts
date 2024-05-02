@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Moment } from 'src/app/interfaces/Moment';
 import { MomentService } from 'src/app/services/moment.service';
+import { MessageService } from 'src/app/services/messages.service';
 
 @Component({
   selector: 'app-novo-moment',
@@ -10,7 +12,11 @@ import { MomentService } from 'src/app/services/moment.service';
 export class NovoMomentComponent {
   textoBotao: string = 'Pronto!';
 
-  constructor(private momentService: MomentService) {}
+  constructor(
+    private momentService: MomentService,
+    private messageService: MessageService,
+    private router: Router
+  ) {}
 
   async createHandler(moment: Moment) {
     const formData = new FormData();
@@ -22,12 +28,13 @@ export class NovoMomentComponent {
       formData.append('image', moment.image);
     }
 
-    //TODO
-    
-    //1. Enviar os dados para o service, no qual eles serão cadastrados no banco de dados da API
+    //envio dos dados para o service, no qual eles serão cadastrados no banco de dados da API
     await this.momentService.criarMoment(formData).subscribe();
 
-    //2. Exibir as mensagens de sucesso ou falha do evento (criar ou editar um momento)
-    //3. Redirecionar o usuário para a página principal após enviar o formulário
+    //exibição das mensagens do sistema após o evento (criar, editar ou remover um momento)
+    this.messageService.add('Momento criado com sucesso!');
+
+    //redirecionamento do usuário para a página principal após enviar o formulário
+    this.router.navigate(['/']);
   }
 }
