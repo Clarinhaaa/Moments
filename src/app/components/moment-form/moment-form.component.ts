@@ -9,15 +9,17 @@ import { Moment } from 'src/app/interfaces/Moment';
 })
 export class MomentFormComponent implements OnInit {
   @Input() textoBotao!: string;
+  @Input() momentData: Moment | null = null;
   @Output() onSubmit = new EventEmitter<Moment>();
 
   momentForm!: FormGroup;
 
   ngOnInit(): void {
     this.momentForm = new FormGroup({
-      id: new FormControl(''),
-      title: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
+      //Condição ternária: [condição] ? [consequência] : [else]
+      id: new FormControl(this.momentData ? this.momentData.id : ''),
+      title: new FormControl(this.momentData ? this.momentData.title : '', [Validators.required]),
+      description: new FormControl(this.momentData ? this.momentData.description : '', [Validators.required]),
       image: new FormControl(''),
     });
   }

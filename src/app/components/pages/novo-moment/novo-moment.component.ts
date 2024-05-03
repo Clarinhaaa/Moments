@@ -10,7 +10,7 @@ import { MessageService } from 'src/app/services/messages.service';
   styleUrls: ['./novo-moment.component.css'],
 })
 export class NovoMomentComponent {
-  textoBotao: string = 'Pronto!';
+  textoBotao: string = 'Criar!';
 
   constructor(
     private momentService: MomentService,

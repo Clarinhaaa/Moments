@@ -28,6 +28,9 @@ export class HomeComponent implements OnInit {
         item.created_at = new Date(item.created_at!).toLocaleDateString(
           'pt-BR'
         );
+        item.updated_at = new Date(item.updated_at!).toLocaleDateString(
+          'pt-BR'
+        );
       });
 
       this.allMoments = data;

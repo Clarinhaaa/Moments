@@ -1,25 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { environment } from 'src/environments/environment.development';
 
 import { MomentService } from 'src/app/services/moment.service';
 import { Moment } from 'src/app/interfaces/Moment';
 import { MessageService } from 'src/app/services/messages.service';
 
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
-
 @Component({
-  selector: 'app-moment',
-  templateUrl: './moment.component.html',
-  styleUrls: ['./moment.component.css'],
+  selector: 'app-edit-moment',
+  templateUrl: './edit-moment.component.html',
+  styleUrls: ['./edit-moment.component.css'],
 })
-export class MomentComponent implements OnInit {
-  faTimes = faTimes;
-  faEdit = faEdit;
-
-  moment?: Moment;
-  baseApiUrl = environment.baseApiUrl;
+export class EditMomentComponent implements OnInit {
+  moment!: Moment;
+  textoBotao: string = 'Editar!';
 
   constructor(
     private momentService: MomentService,
@@ -36,10 +29,20 @@ export class MomentComponent implements OnInit {
     });
   }
 
-  async removeHandler(id: number) {
-    await this.momentService.removeMoment(id).subscribe();
+  async editHandler(momentData: Moment) {
+    const id = this.moment.id;
 
-    this.messageService.add('Momento excluído com sucesso!');
+    const formData = new FormData();
+    formData.append('title', momentData.title);
+    formData.append('description', momentData.description);
+
+    if (momentData.image) {
+      formData.append('image', momentData.image);
+    }
+
+    await this.momentService.updateMoment(id!, formData).subscribe();
+
+    this.messageService.add('Momento editado com sucesso!');
 
     this.router.navigate(['/']);
   }
