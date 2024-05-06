@@ -2,11 +2,11 @@
   <h1>{{ moment.title }}</h1>
   <img src="{{ baseApiUrl }}uploads/{{ moment.image }}" />
   <div class="description-moment">
-    <h3>Descrição:</h3>
+    <h2>Descrição:</h2>
     <p>{{ moment.description }}</p>
   </div>
   <div class="actions">
-    <h3>Ações:</h3>
+    <h2>Ações:</h2>
     <a routerLink="/moments/editar/{{ moment.id }}" class="edit-button">
       <fa-icon [icon]="faEdit"></fa-icon> Editar
     </a>
@@ -16,20 +16,19 @@
   </div>
 
   <div class="comments">
-    <h3>Comentários ({{ moment.comments!.length }})</h3>
-    <!-- Condição para verificar se há comentários: *ngIf="moment.comments!.length > 0; else noComments" -->
-    <div>
+    <h2>Comentários ({{ moment.comments!.length }})</h2>
+    <div *ngIf="moment.comments!.length > 0; else noComments">
       <div class="comment-container" *ngFor="let comment of moment.comments">
         <div class="comment">{{ comment.text }}</div>
         <div class="username"><span>por: </span>{{ comment.username }}</div>
       </div>
     </div>
     <ng-template #noComments>
-      <p>Não há comentários</p>
+      <p class="comment">Não há comentários</p>
     </ng-template>
   </div>
   <div class="comment-form">
-    <h3>Deixe um comentário:</h3>
+    <h2>Deixe um comentário:</h2>
     <form
       [formGroup]="commentForm"
       #formDir="ngForm"

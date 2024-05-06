@@ -78,12 +78,6 @@ export class MomentComponent implements OnInit {
     data.momentId = Number(this.moment!.id);
 
     await this.commentService.createComment(data).subscribe((comment) => {
-      let created_at = comment.data.created_at;
-      let updated_at = comment.data.updated_at;
-
-      created_at = new Date(created_at!).toLocaleDateString('pt-BR');
-      updated_at = new Date(updated_at!).toLocaleDateString('pt-BR');
-
       return this.moment!.comments!.push(comment.data);
     });
     console.log(data);

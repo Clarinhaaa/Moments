@@ -24,6 +24,10 @@ img {
   width: 100%;
 }
 
+.description-moment {
+  font-size: 1.1em;
+}
+
 .actions {
   background-color: #eee;
 }
@@ -34,7 +38,7 @@ img {
   width: 100%;
 }
 
-h3 {
+h2 {
   margin-bottom: 0.5em;
 }
 
@@ -47,11 +51,11 @@ h3 {
 }
 
 .comment {
-  font-size: .9em;
+  font-size: 1.1em;
 }
 
 .username {
-  font-size: .8em;
+  font-size: 0.9em;
 }
 
 .username span {
